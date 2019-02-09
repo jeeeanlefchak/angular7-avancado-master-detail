@@ -1,0 +1,40 @@
+ng new finansyss --routing --skip-tests
+
+npm i bootstrap jquery --save
+
+npm i angular-imask --save
+
+npm i currency-formatter --save
+
+npm i moment --save
+
+npm i toastr --save
+
+npm install chart.js --save // www.primefaces.org
+npm i primeng --save // www.primefaces.org
+npm i primeicons --save // www.primefaces.org
+
+npm i angular-in-memory-web-api --save // api
+
+
+
+ "styles": [
+              "src/styles.css",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/toastr/build/toastr.min.css",
+              "node_modules/primeicons/primeicons.css",
+              "node_modules/primeng/resources/themes/nova-ligth/theme.css",
+              "node_modules/primeng/resources/primeng.min.css"
+            ],
+            "scripts": [
+              "node_modules/jquery/dist/jquery.min.js",
+              "node_modules/bootstrap/dist/js/bootstrap.min.js",
+              "node_modules/chart.js/dist/Chart.bundle.js"
+            ],
+
+
+ng g m pages/categories --routing // cira a page de categorias
+
+ng g c pages/categories/category-list // cria o componenet css,html,ts..
+
+ng g c pages/categories/category-form
