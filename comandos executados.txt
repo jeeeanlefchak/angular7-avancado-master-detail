@@ -38,3 +38,5 @@ ng g m pages/categories --routing // cira a page de categorias
 ng g c pages/categories/category-list // cria o componenet css,html,ts..
 
 ng g c pages/categories/category-form
+
+ng g s pages/categories/shared/category
