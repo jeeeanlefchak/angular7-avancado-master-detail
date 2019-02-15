@@ -25,7 +25,7 @@
   </div>
 </div>
 
-<form [formGroup]="categoryForm">
+<form [formGroup]="categoryForm" (submit)="createCategory()">
   <div class="card">
     <div class="card-header">
       Informações sobre a categoria
@@ -34,15 +34,19 @@
       <div class="form-row">
         <div class="form-group col-md-4">
           <label for="name">Nome</label>
-          <input type="text" id="name" class="form-control">
+          <input type="text" id="name" class="form-control" formControlName="name">
+          <div class="text-danger" *ngIf="categoryForm.get('name').invalid && categoryForm.get('name').touched">
+          <diV *ngIf="categoryForm.get('name').errors.required">Campo Obrigatorio</diV>
+          <diV *ngIf="categoryForm.get('name').errors.minLength">deve ter no minimo 3 caracters</diV>
+          </div>
         </div>
         <div class="form-group col-md-8">
           <label for="descricao">Descrição</label>
-          <input type="text" id="description" class="form-control">
+          <input type="text" id="description" class="form-control" formControlName="description">
         </div>
       </div>
     </div>
   </div>
 
-  <button type="submit" class="btn btn-primary bt-lg float-right mt-3">Salvar</button>
+  <button type="submit" class="btn btn-primary bt-lg float-right mt-3" [disabled]="submittingForm || categoryForm.invalid">Salvar</button>
 </form>
