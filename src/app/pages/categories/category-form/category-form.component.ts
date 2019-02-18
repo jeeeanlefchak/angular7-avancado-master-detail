@@ -4,7 +4,7 @@ import { ActivatedRoute, Router } from "@angular/router";
 import { switchMap } from "rxjs/operators";
 import { Category } from "../shared/category.model";
 import { CategoryService } from "../shared/category.service";
-// import * from "toastr";
+import {toastr} from "toastr";
 @Component({
   selector: "app-category-form",
   templateUrl: "./category-form.component.html",
@@ -99,7 +99,12 @@ export class CategoryFormComponent implements OnInit, AfterContentChecked {
   }
 
   private updateCategory(){
-
+    const category : Category = Object.assign(new Category(), this.categoryForm.value);
+    this.categoryService.update(category).subscribe(category=>{
+      this.actionForSuccess(category);
+    },error=>{
+      this.acationsFormError(error);
+    })
   }
 
   private actionForSuccess(category : Category){
