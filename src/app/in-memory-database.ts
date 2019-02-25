@@ -8,8 +8,8 @@ export class InMemoryDatabase implements InMemoryDbService {
         ];
 
         const entries : Entry[] = [
-            { id:1, name: 'Gás de cozinha', categoryId : categories[0].id, category: categories[0], paid: true , date:'19/02/2019', amount:"70,00", type:'expense', description:"" },
-            { id:1, name: 'Gás de cozinha', categoryId : categories[0].id, category: categories[0], paid: true , date:'19/02/2019', amount:"70,00", type:'expense', description:"" }
+            { id:1, name: 'Gás de cozinha', categoryId : categories[0].id, category: categories[0], paid: true , date:'19/02/2019', amount:"70,00", type:'expense', description:"", paidText:'Pago' },
+            { id:1, name: 'Gás de cozinha', categoryId : categories[0].id, category: categories[0], paid: true , date:'19/02/2019', amount:"70,00", type:'revenue', description:"", paidText:'Pendente' }
         ]
 
         return {categories, entries};

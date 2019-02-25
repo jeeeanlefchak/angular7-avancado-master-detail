@@ -9,7 +9,7 @@ import { Entry } from './entry.model';
 })
 export class EntryService {
 
-  private apiPath: string = "api/categories";
+  private apiPath: string = "api/entries";
 
   constructor(private http: HttpClient) { }
 

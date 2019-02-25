@@ -27,8 +27,8 @@
     <tr class="bg-primary text-ligth">
       <th>Lançamento</th>
       <th>Categoria</th>
-      <th>Valor R$</th>
-      <th>Ação</th>
+      <th class="text-rigth">Valor R$</th>
+      <th class="text-center">Ação</th>
     </tr>
   </thead>
   <tbody>
@@ -40,10 +40,14 @@
       <td>
         {{entry.category.name}}
       </td>
-      <td>
-        {{entry.amount}}
-      </td>
-      <td>
+      <td class="text-rigth">
+        <strong [class.text-success]="entry.type == 'revenue'"  [class.text-danger]="entry.type == 'expense'">
+          {{entry.amount}}
+        </strong>
+        <br>
+        <span class="badge-ligth">{{entry.paidText}}</span>
+      </td> 
+      <td class="text-center">
         <a [routerLink]="[entry.id, 'edit']" class="btn btn-outline-info btn-sm mr-2">Editar</a>
         <button (click)="deleteCategory(entry)" class="btn btn-outline-danger btn-sm">Excluir</button>
       </td>
