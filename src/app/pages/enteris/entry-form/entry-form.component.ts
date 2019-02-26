@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterContentChecked } from "@angular/core";
+import { OnInit, AfterContentChecked, Component } from "@angular/core";
 import { FormBuilder, FormGroup, Validators } from "@angular/forms";
 import { ActivatedRoute, Router } from "@angular/router";
 import { switchMap } from "rxjs/operators";
@@ -17,7 +17,18 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
   serverErrorMessages: string[] = null;
   submittingForm: boolean = false;
   entry: Entry = new Entry();
-
+  imaskConfig = {
+    mask:Number,
+    scale: 2,
+    thousandsSeparator:'',
+    padFractionalZeros:true,
+    normalizeZeros:true,
+    radix:','
+  };
+  // ptBr = {
+  //   firstDayOfWeek:0,
+  //   dayN
+  // };
   constructor(
     private entryService: EntryService,
     private route: ActivatedRoute,
