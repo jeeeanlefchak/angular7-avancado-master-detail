@@ -5,6 +5,8 @@ import { switchMap } from "rxjs/operators";
 import { Entry } from "../shared/entry.model";
 import { EntryService } from "../shared/entry.service";
 import toastr from "toastr";
+import { Category } from '../../categories/shared/category.model';
+import { CategoryService } from '../../categories/shared/category.service';
 @Component({
   selector: "app-entry-form",
   templateUrl: "./entry-form.component.html",
@@ -25,6 +27,7 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     normalizeZeros:true,
     radix:','
   };
+  categories : Array<Category>;
   // ptBr = {
   //   firstDayOfWeek:0,
   //   dayN
@@ -34,12 +37,14 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     private route: ActivatedRoute,
     private router: Router,
     public formBuilder: FormBuilder,
+    public categoryService : CategoryService
   ) {}
 
   ngOnInit() {
     this.setCurrentAction();
     this.buildEntryForm();
     this.loadEntry();
+    this.loadCategories();
   }
 
   submitForm(){
@@ -55,6 +60,12 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     this.setPageTitle();
   }
 
+  private loadCategories(){
+    this.categoryService.getAll().subscribe(categories =>{
+      this.categories = categories;
+    })
+  }
+
   private setCurrentAction() {
     if (this.route.snapshot.url[0].path == "new") {
       this.currentAction = "new";
@@ -63,15 +74,24 @@ export class EntryFormComponent implements OnInit, AfterContentChecked {
     }
   }
 
+  get typeOptions(): Array<any>{
+    return Object.entries(Entry.types).map(([value, text])=>{
+      return{
+        text:text,
+        value:value
+      }
+    })
+  }
+
   private buildEntryForm() {
     this.entryForm = this.formBuilder.group({
       id: [null],
       name: [null, Validators.compose([Validators.required, Validators.minLength(3)])],
       description: [null],
-      type: [null, [Validators.required]],
+      type: ['expanse', [Validators.required]],
       amount: [null,[Validators.required]],
       date: [null,[Validators.required]],
-      paid: [null,[Validators.required]],
+      paid: [true,[Validators.required]],
       categoryId: [null,[Validators.required]],
     });
   }
