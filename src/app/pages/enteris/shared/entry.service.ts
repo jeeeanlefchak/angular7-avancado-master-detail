@@ -11,7 +11,7 @@ import { BaseResourceService } from 'src/app/shared/service/base-resource.servic
 export class EntryService extends BaseResourceService<Entry> {
 
   constructor(protected injector: Injector, private categoryService: CategoryService) {
-    super("api/entries", injector);
+    super("api/entries", injector, Entry.fromJson);
   }
 
 
@@ -34,14 +34,4 @@ export class EntryService extends BaseResourceService<Entry> {
     )
   }
 
-
-  protected jsonDataToEntry(jsonData: any): Entry {
-    return jsonData as Entry;
-  }
-
-  protected jsonDataToResources(jsonData: any[]): Entry[] {
-    const categories: Entry[] = [];
-    jsonData.forEach(element => categories.push(element as Entry));
-    return categories;
-  }
 }
