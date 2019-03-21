@@ -1,6 +1,6 @@
 <app-bread-crumb [items]="[ {text: 'Relatório de Receitas e Despesas' } ]"></app-bread-crumb>
 
-<app-page-header page-title="Relátorio de Receitas e Despesas" >
+<app-page-header page-title="Relátorio de Receitas e Despesas" show-button="false">
 </app-page-header>
 
 <div class="card">
@@ -40,5 +40,41 @@
         </select>
       </div>
     </div>
+    <div class="form-row">
+      <div class="col-md text-right">
+        <button type="button" (click)="generateReports()" class="btn btn-primary">Gerar Relatórios</button>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="card-deck mt-5 mb-5">
+  <div class="card text-center text-white bg-success">
+    <div class="card-header">Total de Receitas</div>
+    <div class="card-body">
+      <h3 class="card-title">3500</h3>
+    </div>
+  </div>
+  <div class="card text-center text-white bg-danger">
+    <div class="card-header">Total de Despesas</div>
+    <div class="card-body">
+      <h3 class="card-title">200</h3>
+    </div>
+  </div>
+  <div class="card text-center text-white bg-info">
+    <div class="card-header">Saldo</div>
+    <div class="card-body">
+      <h3 class="card-title">5000</h3>
+    </div>
+  </div>
+</div>
+
+<hr>
+
+<div class="row mt-5 mb-4">
+  <div class="col-md-6">
+    grafico receita
+  </div>
+  <div class="col-md-6">
+    grafico despesas
   </div>
 </div>
